@@ -17,7 +17,8 @@ public class GameMain {
 	private void runApp() {	
 		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
         frame.setSize(1000, 500);
-        System.out.println("H");
+        //Test Commit
+        System.out.println("This works");
         
         
         //TODO: add components and timer here
