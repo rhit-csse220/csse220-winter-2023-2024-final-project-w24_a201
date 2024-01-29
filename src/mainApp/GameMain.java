@@ -7,7 +7,7 @@ package mainApp;
  * <br>Purpose: Top level class for CSSE220 Project containing main method 
  * <br>Restrictions: None
  */
-public class MainApp {
+public class GameMain {
 	
 	
 	private void runApp() {
@@ -20,7 +20,7 @@ public class MainApp {
 	 * @param args unused
 	 */
 	public static void main(String[] args) {
-		MainApp mainApp = new MainApp();
+		GameMain mainApp = new GameMain();
 		mainApp.runApp();		
 	} // main
 
