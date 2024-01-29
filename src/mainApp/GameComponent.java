@@ -2,8 +2,10 @@ package mainApp;
 
 public class GameComponent {
 
+	private Hero hero;
+	
 	public GameComponent() {
-		// TODO Auto-generated constructor stub
+		hero = new Hero(200, 200, 10);
 	}
 
 	public void drawScreen() {
