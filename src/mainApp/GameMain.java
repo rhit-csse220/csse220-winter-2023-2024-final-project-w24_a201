@@ -1,9 +1,9 @@
 package mainApp;
 
 import java.awt.BorderLayout;
-import java.util.Timer;
 
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 /**
  * Class: MainApp
@@ -13,18 +13,23 @@ import javax.swing.JFrame;
  */
 public class GameMain {
 	
+	private static final int DELAY = 50;
 	
 	private void runApp() {	
 		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
         frame.setSize(1000, 500);
-        System.out.println("Final");
+        
+        GameComponent component = new GameComponent();
+        frame.add(component);
+        GameListener gameListener = new GameListener(component);
+        
+        KeystrokeListener keystrokeHandler = new KeystrokeListener();
+        frame.addKeyListener(keystrokeHandler);
         
         
-        //TODO: add components and timer here
-
         
-        
-        
+        Timer timer = new Timer(DELAY, gameListener);
+		timer.start();
         
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
