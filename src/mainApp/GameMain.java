@@ -1,5 +1,9 @@
 package mainApp;
 
+import java.awt.BorderLayout;
+import java.util.Timer;
+
+import javax.swing.JFrame;
 
 /**
  * Class: MainApp
@@ -10,9 +14,19 @@ package mainApp;
 public class GameMain {
 	
 	
-	private void runApp() {
-		System.out.println("Write your cool arcade game here!");	
-		System.out.println("This has worked");
+	private void runApp() {	
+		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
+        frame.setSize(1000, 500);
+        
+        //TODO: add components and timer here
+
+        
+        
+        
+        
+        
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	} // runApp
 
 	/**
