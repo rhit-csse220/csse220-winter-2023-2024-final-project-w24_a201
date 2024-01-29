@@ -13,7 +13,7 @@ import javax.swing.Timer;
  */
 public class GameMain {
 	
-	private static final int DELAY = 50;
+	private static final int DELAY = 20;
 	
 	private void runApp() {	
 		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
@@ -23,7 +23,7 @@ public class GameMain {
         frame.add(component);
         GameListener gameListener = new GameListener(component);
         
-        KeystrokeListener keystrokeHandler = new KeystrokeListener();
+        KeystrokeListener keystrokeHandler = new KeystrokeListener(component);
         frame.addKeyListener(keystrokeHandler);
         
         

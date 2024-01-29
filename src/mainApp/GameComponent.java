@@ -13,7 +13,7 @@ public class GameComponent extends JComponent {
 	private Hero hero;
 	
 	public GameComponent() {
-		hero = new Hero(0, 430, 10);
+		hero = new Hero(0, 430, 5);
 	}
 
 	public void drawScreen() {
@@ -31,6 +31,10 @@ public class GameComponent extends JComponent {
 	@Override
 	protected void paintComponent(Graphics g) {
 		hero.draw(g);
+	}
+
+	public void fly() {
+		hero.flyUp();
 	}
 	
 }

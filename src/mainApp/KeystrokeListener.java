@@ -5,6 +5,11 @@ import java.awt.event.KeyListener;
 
 public class KeystrokeListener implements KeyListener {
 
+	private GameComponent component;
+	
+	public KeystrokeListener(GameComponent component) {
+		this.component = component;
+	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -17,6 +22,7 @@ public class KeystrokeListener implements KeyListener {
 		int spaceKey = 32;
 		if (e.getKeyCode() == spaceKey) {
 			System.out.println("Space Key Pressed");
+			component.fly();
 		}
 	}
 

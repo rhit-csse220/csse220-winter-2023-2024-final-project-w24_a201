@@ -7,6 +7,7 @@ public class Hero {
 
 	private static final int HERO_X = 25;
 	private static final int HERO_Y = 25;
+	private static final int FLYING_SPEED = 5;
 	
 	private int x;
     private int y;
@@ -46,6 +47,10 @@ public class Hero {
 
 	public int getWidth() {
 		return HERO_X;
+	}
+
+	public void flyUp() {
+		y -= FLYING_SPEED;
 	}
 
 }
