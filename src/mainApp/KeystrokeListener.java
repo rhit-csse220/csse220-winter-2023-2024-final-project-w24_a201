@@ -3,6 +3,9 @@ package mainApp;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/*
+ * used to listen for certain key presses to do specific things when a key is pressed
+ */
 public class KeystrokeListener implements KeyListener {
 
 	private GameComponent component;
