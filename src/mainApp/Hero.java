@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public class Hero {
 
-	private static final int HERO_X = 25;
-	private static final int HERO_Y = 25;
+	private static final int HERO_WIDTH = 25;
+	private static final int HERO_HEIGHT = 25;
 	private static final int FLYING_SPEED = 5;
 	
 	private int x;
@@ -42,11 +42,11 @@ public class Hero {
 
     public void draw(Graphics g) {
         g.setColor(Color.BLUE);
-        g.fillRect(x, y, HERO_X, HERO_Y);
+        g.fillRect(x, y, HERO_WIDTH, HERO_HEIGHT);
     }
 
 	public int getWidth() {
-		return HERO_X;
+		return HERO_WIDTH;
 	}
 
 	public void flyUp() {

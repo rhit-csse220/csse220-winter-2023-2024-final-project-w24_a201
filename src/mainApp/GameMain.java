@@ -14,10 +14,12 @@ import javax.swing.Timer;
 public class GameMain {
 	
 	private static final int DELAY = 20;
+	private static final int FRAME_HEIGHT = 500;
+	private static final int FRAME_WIDTH = 1000;
 	
 	private void runApp() {	
 		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
-        frame.setSize(1000, 500);
+        frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         
         GameComponent component = new GameComponent();
         frame.add(component);
