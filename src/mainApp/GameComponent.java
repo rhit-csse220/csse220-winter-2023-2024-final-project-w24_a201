@@ -25,6 +25,9 @@ public class GameComponent extends JComponent {
 		if ( hero.getX() > this.getWidth() - hero.getWidth() ) {
 			hero.setX(this.getWidth() - hero.getWidth());
 		} 
+		if ( hero.getY() < 0) {
+			hero.setY(0);
+		} 
 		
 	}
 

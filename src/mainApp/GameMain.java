@@ -13,7 +13,7 @@ import javax.swing.Timer;
  */
 public class GameMain {
 	
-	private static final int DELAY = 30;
+	private static final int DELAY = 20;
 	
 	private void runApp() {	
 		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
