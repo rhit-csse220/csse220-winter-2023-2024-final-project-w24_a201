@@ -24,9 +24,13 @@ public class KeystrokeListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 		int spaceKey = 32;
 		if (e.getKeyCode() == spaceKey) {
-			System.out.println("Space Key Pressed");
 			component.fly();
 		}
+		else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            component.switchLevel(component.getCurrentLevel()+1);
+        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+        	component.switchLevel(component.getCurrentLevel()+1);
+        }
 	}
 
 	@Override

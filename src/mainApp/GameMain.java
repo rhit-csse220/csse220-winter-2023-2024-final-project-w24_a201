@@ -1,7 +1,5 @@
 package mainApp;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -13,7 +11,7 @@ import javax.swing.Timer;
  */
 public class GameMain {
 	
-	private static final int DELAY = 20;
+	private static final int DELAY = 40;
 	private static final int FRAME_HEIGHT = 500;
 	private static final int FRAME_WIDTH = 1000;
 	
@@ -28,7 +26,11 @@ public class GameMain {
         KeystrokeListener keystrokeHandler = new KeystrokeListener(component);
         frame.addKeyListener(keystrokeHandler);
         
-        
+        try {
+			component.loadLevel("levels/Level1.txt");
+		} catch (InvalidLevelFormatException e) {
+			e.printStackTrace();
+		}
         
         Timer timer = new Timer(DELAY, gameListener);
 		timer.start();

@@ -13,7 +13,7 @@ public class ElectricBarrier extends Barrier {
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.ORANGE); 
+		g.setColor(Color.RED); 
         g.fillRect(getX(), getY(), getWidth(), getHeight());
 	}
 }

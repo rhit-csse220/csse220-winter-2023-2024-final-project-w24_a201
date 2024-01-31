@@ -18,6 +18,5 @@ public class GameListener implements ActionListener {
     public void advanceOneTick() {
         gameComponent.updateGame();
         gameComponent.drawScreen();
-        System.out.println("ticking");
     }
 }
