@@ -5,7 +5,7 @@ import javax.swing.Timer;
 
 /**
  * Class: MainApp
- * @author Put your team name here
+ * @W24_A201 Paul Cleary, Brady Strawmeyer, Ethan Spiece
  * <br>Purpose: Top level class for CSSE220 Project containing main method 
  * <br>Restrictions: None
  */

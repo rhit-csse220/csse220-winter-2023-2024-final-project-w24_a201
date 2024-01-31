@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /*
- * Coin class controls creating the coin objects
+ * Coin class controls creating and drawing the coin objects
  */
 public class Coin {
 

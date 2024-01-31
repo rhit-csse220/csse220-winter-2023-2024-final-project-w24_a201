@@ -2,7 +2,9 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+/**
+ * Creates and draws electrified barriers
+ */
 public class ElectricBarrier extends Barrier {
 
 

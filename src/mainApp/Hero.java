@@ -2,7 +2,9 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+/**
+ * Creates the hero object that is controlled by the user
+ */
 public class Hero {
 
 	private static final int HERO_WIDTH = 25;

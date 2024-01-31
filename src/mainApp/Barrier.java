@@ -2,7 +2,9 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+/**
+ * Makes and draws non-electrified barriers
+ */
 public class Barrier {
 
 	private int x; 

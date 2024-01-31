@@ -4,12 +4,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /*
- * used to listen for certain key presses to do specific things when a key is pressed
+ * Used to listen for certain key presses to do specific things when a key is pressed
  */
 public class KeystrokeListener implements KeyListener {
 
 	private GameComponent component;
-	
+	private static final int SPACE_KEY_ID = 32;
 	public KeystrokeListener(GameComponent component) {
 		this.component = component;
 	}
@@ -22,8 +22,7 @@ public class KeystrokeListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		int spaceKey = 32;
-		if (e.getKeyCode() == spaceKey) {
+		if (e.getKeyCode() == SPACE_KEY_ID) {
 			component.fly();
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_UP) {
