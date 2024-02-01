@@ -15,7 +15,7 @@ public class GameComponent extends JComponent {
 
 	private static final long serialVersionUID = 1L;
 	private static final int STARTING_X = 0;
-	private static final int STARTING_Y = 430;
+	private static final int STARTING_Y = 380;
 	private static final int STARTING_SPEED = 5;
 	
 	private Hero hero;
@@ -51,6 +51,7 @@ public class GameComponent extends JComponent {
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
         barriers.clear();
         coins.clear();
+        electricBarriers.clear();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -59,6 +60,10 @@ public class GameComponent extends JComponent {
 
             while ((line = reader.readLine()) != null) {
             	if (line.length() != expectedLineLength) {
+            		barriers.clear();
+                    coins.clear();
+                    electricBarriers.clear();
+                    switchLevel(1);
                     throw new InvalidLevelFormatException("Inconsistent line lengths in the level file");
                 }
 
@@ -82,6 +87,7 @@ public class GameComponent extends JComponent {
         } 
         catch (IOException ioe) {
             System.err.println("Error loading level from file: " + ioe.getMessage());
+            switchLevel(1);
         }
     }
 	

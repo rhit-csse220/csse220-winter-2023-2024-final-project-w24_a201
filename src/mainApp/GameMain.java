@@ -12,7 +12,7 @@ import javax.swing.Timer;
 public class GameMain {
 	
 	private static final int DELAY = 40;
-	private static final int FRAME_HEIGHT = 500;
+	private static final int FRAME_HEIGHT = 450;
 	private static final int FRAME_WIDTH = 1000;
 	
 	private void runApp() {	
@@ -27,7 +27,7 @@ public class GameMain {
         frame.addKeyListener(keystrokeHandler);
         
         try {
-			component.loadLevel("levels/Level1.txt");
+			component.loadLevel("Levels/level1.txt");
 		} catch (InvalidLevelFormatException e) {
 			e.printStackTrace();
 		}

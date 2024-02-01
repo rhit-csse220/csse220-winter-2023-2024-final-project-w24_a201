@@ -10,6 +10,8 @@ public class KeystrokeListener implements KeyListener {
 
 	private GameComponent component;
 	private static final int SPACE_KEY_ID = 32;
+	private static final int UP_ARROW_ID = 38;
+	private static final int DOWN_ARROW_ID = 40;
 	public KeystrokeListener(GameComponent component) {
 		this.component = component;
 	}
@@ -25,10 +27,11 @@ public class KeystrokeListener implements KeyListener {
 		if (e.getKeyCode() == SPACE_KEY_ID) {
 			component.fly();
 		}
-		else if (e.getKeyCode() == KeyEvent.VK_UP) {
+		if (e.getKeyCode() == UP_ARROW_ID) {
             component.switchLevel(component.getCurrentLevel()+1);
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-        	component.switchLevel(component.getCurrentLevel()+1);
+        }
+		if (e.getKeyCode() == DOWN_ARROW_ID) {
+        	component.switchLevel(component.getCurrentLevel()-1);
         }
 	}
 
