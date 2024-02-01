@@ -23,7 +23,7 @@ public class GameComponent extends JComponent {
 	private int currentLevel = 1; 
     private ArrayList<Barrier> barriers = new ArrayList<>();
     private ArrayList<Coin> coins = new ArrayList<>();
-    private ArrayList<ElectricBarrier> electricBarriers = new ArrayList<>();  
+      
     private static final int BARRIER_WIDTH = 20;  
     private static final int BARRIER_HEIGHT = 20;
     private static final int COIN_RADIUS = 10;
@@ -39,19 +39,21 @@ public class GameComponent extends JComponent {
 
 	public void updateGame() {
 		hero.move();
+//		hero.gravity();
 		if ( hero.getX() > this.getWidth() - hero.getWidth() ) {
 			hero.setX(this.getWidth() - hero.getWidth());
 		} 
 		if ( hero.getY() < 0) {
 			hero.setY(0);
-		} 
-		
+		}
+//		if ( hero.getY() > this.getHeight() - hero.getWidth()) {
+//			hero.setY(this.getHeight() - 0);
+//		}
 	}
 	
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
         barriers.clear();
         coins.clear();
-        electricBarriers.clear();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -62,7 +64,6 @@ public class GameComponent extends JComponent {
             	if (line.length() != expectedLineLength) {
             		barriers.clear();
                     coins.clear();
-                    electricBarriers.clear();
                     switchLevel(1);
                     throw new InvalidLevelFormatException("Inconsistent line lengths in the level file");
                 }
@@ -76,7 +77,7 @@ public class GameComponent extends JComponent {
                         barriers.add(new Barrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
                     } 
                     else if (symbol == 'E') {
-                        electricBarriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
+                        barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
                     } 
                     else if (symbol == 'C') {
                         coins.add(new Coin(x, y, COIN_RADIUS));
@@ -110,9 +111,6 @@ public class GameComponent extends JComponent {
         for (Barrier barrier : barriers) {
             barrier.draw(g);
         }
-        for (ElectricBarrier electricBarrier : electricBarriers) {
-        	electricBarrier.draw(g);
-        }
         for (Coin coin : coins) {
             coin.draw(g);
         }
@@ -126,5 +124,9 @@ public class GameComponent extends JComponent {
 	public int getCurrentLevel() {
 		return currentLevel;
 	}
+
+//	public void gravity() {
+//		hero.gravity();
+//	}
 	
 }

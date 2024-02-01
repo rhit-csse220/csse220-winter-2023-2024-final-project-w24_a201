@@ -54,5 +54,9 @@ public class Hero {
 	public void flyUp() {
 		y -= FLYING_SPEED;
 	}
+	
+//	public void gravity() {
+//		y += FLYING_SPEED;
+//	}
 
 }
