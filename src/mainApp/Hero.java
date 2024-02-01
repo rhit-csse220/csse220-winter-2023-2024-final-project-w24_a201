@@ -9,7 +9,8 @@ public class Hero {
 
 	private static final int HERO_WIDTH = 25;
 	private static final int HERO_HEIGHT = 25;
-	private static final int FLYING_SPEED = 5;
+	private static final int FLYING_SPEED = 8;
+	private static final int GRAVITY = 5;
 	
 	private int x;
     private int y;
@@ -55,8 +56,8 @@ public class Hero {
 		y -= FLYING_SPEED;
 	}
 	
-//	public void gravity() {
-//		y += FLYING_SPEED;
-//	}
+	public void gravity() {
+		y += GRAVITY;
+	}
 
 }

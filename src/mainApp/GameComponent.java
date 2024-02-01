@@ -39,16 +39,16 @@ public class GameComponent extends JComponent {
 
 	public void updateGame() {
 		hero.move();
-//		hero.gravity();
+		hero.gravity();
 		if (hero.getX() > this.getWidth() - hero.getWidth()) {
 			hero.setX(this.getWidth() - hero.getWidth());
 		}
 		if (hero.getY() < 0) {
 			hero.setY(0);
 		}
-//		if ( hero.getY() > this.getHeight() - hero.getWidth()) {
-//			hero.setY(this.getHeight() - 0);
-//		}
+		if ( hero.getY() > this.getHeight() - hero.getWidth()) {
+			hero.setY(this.getHeight() -hero.getWidth());
+		}
 	}
 
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
@@ -124,8 +124,8 @@ public class GameComponent extends JComponent {
 		return currentLevel;
 	}
 
-//	public void gravity() {
-//		hero.gravity();
-//	}
+	public void gravity() {
+		hero.gravity();
+	}
 
 }
