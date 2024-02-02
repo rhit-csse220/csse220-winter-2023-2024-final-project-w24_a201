@@ -13,15 +13,15 @@ public class Barrier {
     private int height; 
 
     public Barrier(int x, int y, int width, int height) {
-        this.setX(x);
-        this.setY(y);
-        this.setWidth(width);
-        this.setHeight(height);
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
     }
 
     public void draw(Graphics g) {
         g.setColor(Color.GRAY); 
-        g.fillRect(getX(), getY(), getWidth(), getHeight());
+        g.fillRect(this.x, this.y, this.width, this.height);
     }
 
 	public int getX() {

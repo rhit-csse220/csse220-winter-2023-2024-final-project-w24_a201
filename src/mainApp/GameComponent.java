@@ -24,10 +24,13 @@ public class GameComponent extends JComponent {
 	private int currentLevel = 1;
 	private ArrayList<Barrier> barriers = new ArrayList<>();
 	private ArrayList<Coin> coins = new ArrayList<>();
+	private ArrayList<Missile> missiles = new ArrayList<>();
 
 	private static final int BARRIER_WIDTH = 20;
 	private static final int BARRIER_HEIGHT = 20;
 	private static final int COIN_RADIUS = 10;
+	private static final int MISSILE_WIDTH = 10;
+	private static final int MISSILE_HEIGHT = 20;
 	
 	public GameComponent() {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
@@ -54,6 +57,7 @@ public class GameComponent extends JComponent {
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
 		barriers.clear();
 		coins.clear();
+		missiles.clear();
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			String line;
@@ -79,6 +83,8 @@ public class GameComponent extends JComponent {
 						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
+					} else if (symbol == 'M') {
+						missiles.add(new Missile(x, y, 3, MISSILE_WIDTH, MISSILE_HEIGHT));
 					}
 				}
 				row++;
