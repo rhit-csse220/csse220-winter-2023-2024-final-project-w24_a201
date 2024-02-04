@@ -31,6 +31,8 @@ public class GameComponent extends JComponent {
 	private static final int COIN_RADIUS = 10;
 	private static final int MISSILE_WIDTH = 10;
 	private static final int MISSILE_HEIGHT = 20;
+	private static final int MISSILE_SPEED = 5;
+	private static final int MISSILE_RADIUS = 10;
 	
 	public GameComponent() {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
@@ -58,6 +60,7 @@ public class GameComponent extends JComponent {
 		//for missile movement
 		for (Missile missile : missiles) {
 	        missile.move();
+	        missile.trackHero(hero);
 	    }
 		
 	}
@@ -92,7 +95,9 @@ public class GameComponent extends JComponent {
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
-						missiles.add(new Missile(x, y, 5, MISSILE_WIDTH, MISSILE_HEIGHT));
+						missiles.add(new Missile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS));
+					} else if (symbol == 'T') {
+						missiles.add(new TrackingMissile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS));
 					}
 				}
 				row++;
