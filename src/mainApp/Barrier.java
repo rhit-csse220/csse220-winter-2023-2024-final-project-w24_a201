@@ -21,7 +21,7 @@ public class Barrier {
 
     public void draw(Graphics g) {
         g.setColor(Color.GRAY); 
-        g.fillRect(this.x, this.y, this.width, this.height);
+        g.fillRect(this.x, this.y+10, this.width, this.height);
     }
 
 	public int getX() {

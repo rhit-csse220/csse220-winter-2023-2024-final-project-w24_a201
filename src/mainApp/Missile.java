@@ -28,5 +28,8 @@ public class Missile {
         
     }
 
-	
+    public void move() {
+        x -= speed;
+    }
+    
 }

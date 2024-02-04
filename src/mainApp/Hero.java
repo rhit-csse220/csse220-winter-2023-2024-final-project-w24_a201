@@ -9,17 +9,19 @@ public class Hero {
 
 	private static final int HERO_WIDTH = 25;
 	private static final int HERO_HEIGHT = 25;
-	private static final int FLYING_SPEED = 8;
+	private static final int FLYING_SPEED = 5;
 	private static final int GRAVITY = 5;
 	
 	private int x;
     private int y;
     private int speed;
+    private boolean isFlying;
     
     public Hero(int x, int y, int speed) {
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.isFlying = false;
     }
 
     public int getX() {
@@ -54,10 +56,14 @@ public class Hero {
 
 	public void flyUp() {
 		y -= FLYING_SPEED;
+		isFlying = true;
 	}
 	
 	public void gravity() {
-		y += GRAVITY;
+		if (!isFlying) {
+            y += GRAVITY;  
+        }
+        isFlying = false;
 	}
 
 }

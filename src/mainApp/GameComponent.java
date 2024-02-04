@@ -41,8 +41,10 @@ public class GameComponent extends JComponent {
 	}
 
 	public void updateGame() {
+		//for hero movement
 		hero.move();
 		hero.gravity();
+		//keep the hero on the screen
 		if (hero.getX() > this.getWidth() - hero.getWidth()) {
 			hero.setX(this.getWidth() - hero.getWidth());
 		}
@@ -52,6 +54,12 @@ public class GameComponent extends JComponent {
 		if ( hero.getY() > this.getHeight() - hero.getWidth()) {
 			hero.setY(this.getHeight() -hero.getWidth());
 		}
+		
+		//for missile movement
+		for (Missile missile : missiles) {
+	        missile.move();
+	    }
+		
 	}
 
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
@@ -84,7 +92,7 @@ public class GameComponent extends JComponent {
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
-						missiles.add(new Missile(x, y, 3, MISSILE_WIDTH, MISSILE_HEIGHT));
+						missiles.add(new Missile(x, y, 5, MISSILE_WIDTH, MISSILE_HEIGHT));
 					}
 				}
 				row++;
@@ -118,6 +126,9 @@ public class GameComponent extends JComponent {
 		}
 		for (Coin coin : coins) {
 			coin.draw(g);
+		}
+		for (Missile missile : missiles) {
+			missile.draw(g);
 		}
 		hero.draw(g);
 	}
