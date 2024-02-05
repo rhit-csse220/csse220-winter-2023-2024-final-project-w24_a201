@@ -9,11 +9,13 @@ import java.awt.event.KeyListener;
 public class KeystrokeListener implements KeyListener {
 
 	private GameComponent component;
+	private Hero hero;
 	private static final int SPACE_KEY_ID = 32;
 	private static final int UP_ARROW_ID = 38;
 	private static final int DOWN_ARROW_ID = 40;
-	public KeystrokeListener(GameComponent component) {
+	public KeystrokeListener(GameComponent component, Hero hero) {
 		this.component = component;
+		this.hero = hero;
 	}
 	
 	@Override
@@ -25,7 +27,7 @@ public class KeystrokeListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == SPACE_KEY_ID) {
-			component.fly();
+			hero.isFlying = true;
 		}
 		if (e.getKeyCode() == UP_ARROW_ID) {
             component.switchLevel(component.getCurrentLevel()+1);
@@ -37,8 +39,10 @@ public class KeystrokeListener implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getKeyCode() == SPACE_KEY_ID) {
+			hero.isFlying = false;
+//			System.out.println("done flying");
+		}
 	}
 
 }

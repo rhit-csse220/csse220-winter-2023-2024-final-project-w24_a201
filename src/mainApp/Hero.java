@@ -15,13 +15,15 @@ public class Hero {
 	private int x;
     private int y;
     private int speed;
-    private boolean isFlying;
+    protected boolean isFlying;
     
     public Hero(int x, int y, int speed) {
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.isFlying = false;
+        
+        System.out.println("new hero" + this);
     }
 
     public int getX() {
@@ -55,15 +57,18 @@ public class Hero {
 	}
 
 	public void flyUp() {
-		y -= FLYING_SPEED;
-		isFlying = true;
+		
+		if (isFlying) {
+			y -= FLYING_SPEED;
+		}
+		else {
+		}
 	}
 	
 	public void gravity() {
 		if (!isFlying) {
             y += GRAVITY;  
         }
-        isFlying = false;
 	}
 
 }

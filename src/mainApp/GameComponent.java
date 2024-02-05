@@ -36,6 +36,11 @@ public class GameComponent extends JComponent {
 	
 	public GameComponent() {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
+		System.out.println(this);
+	}
+	
+	public Hero getHero() {
+		return hero;
 	}
 
 	public void drawScreen() {
@@ -46,6 +51,8 @@ public class GameComponent extends JComponent {
 		//for hero movement
 		hero.move();
 		hero.gravity();
+		hero.flyUp();
+		
 		//keep the hero on the screen
 		if (hero.getX() > this.getWidth() - hero.getWidth()) {
 			hero.setX(this.getWidth() - hero.getWidth());

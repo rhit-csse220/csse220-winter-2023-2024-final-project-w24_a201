@@ -23,7 +23,8 @@ public class GameMain {
         frame.add(component);
         GameListener gameListener = new GameListener(component);
         
-        KeystrokeListener keystrokeHandler = new KeystrokeListener(component);
+        Hero hero = component.getHero();
+		KeystrokeListener keystrokeHandler = new KeystrokeListener(component, hero);
         frame.addKeyListener(keystrokeHandler);
         
         try {
