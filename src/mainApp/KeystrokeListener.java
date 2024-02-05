@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /*
- * Used to listen for certain key presses to do specific things when a key is pressed
+ * Used to listen for certain key presses and to do specific things when that key is pressed
  */
 public class KeystrokeListener implements KeyListener {
 
