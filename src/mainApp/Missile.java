@@ -2,7 +2,9 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+/**
+ * Constructs a missile object and draws it and moves it on the screen
+ */
 public class Missile {
 	protected int x; 
     protected int y; 

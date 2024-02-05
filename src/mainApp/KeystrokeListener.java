@@ -41,7 +41,6 @@ public class KeystrokeListener implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == SPACE_KEY_ID) {
 			hero.isFlying = false;
-//			System.out.println("done flying");
 		}
 	}
 

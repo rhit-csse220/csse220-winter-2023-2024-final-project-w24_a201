@@ -2,7 +2,9 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
-
+/**
+ * A type of missile that tracks the player as it moves
+ */
 public class TrackingMissile extends Missile {
 
 	private static int TRACK_SPEED = 3;
