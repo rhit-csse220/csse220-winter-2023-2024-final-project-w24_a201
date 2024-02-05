@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Missile {
-	private int x; 
+	protected int x; 
     protected int y; 
     private int speed;
     private int width;
