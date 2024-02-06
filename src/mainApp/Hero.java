@@ -22,8 +22,6 @@ public class Hero {
         this.y = y;
         this.speed = speed;
         this.isFlying = false;
-        
-        System.out.println("new hero" + this);
     }
 
     public int getX() {

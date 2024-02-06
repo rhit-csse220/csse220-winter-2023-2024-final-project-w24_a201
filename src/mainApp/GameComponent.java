@@ -36,7 +36,6 @@ public class GameComponent extends JComponent {
 	
 	public GameComponent() {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
-		System.out.println(this);
 	}
 	
 	public Hero getHero() {
