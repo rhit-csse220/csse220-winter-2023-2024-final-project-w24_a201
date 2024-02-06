@@ -26,8 +26,6 @@ public class GameComponent extends JComponent {
 	private ArrayList<Missile> missiles = new ArrayList<>();
 	
 	private ArrayList<CollisionObject> objects = new ArrayList<>();
-	
-	
 
 	private static final int BARRIER_WIDTH = 20;
 	private static final int BARRIER_HEIGHT = 20;
@@ -50,13 +48,12 @@ public class GameComponent extends JComponent {
 	}
 
 	public void addObjects() {
-		for (int i = 0; i < coins.size(); i++) {
-			this.objects.add(coins.get(i));
-		}
+		objects.addAll(coins);
+		objects.addAll(missiles);
 	}
 	
 	public void updateGame() {
-		
+		//adds objects to collision object list
 		addObjects();
 		
 		//for hero movement
@@ -64,6 +61,7 @@ public class GameComponent extends JComponent {
 		hero.gravity();
 		hero.flyUp();
 		
+		//handles collisions
 		handleCollisions();
 		
 		//keep the hero on the screen
@@ -87,28 +85,23 @@ public class GameComponent extends JComponent {
 
 	public void handleCollisions() {
 
-		
-
-			for (CollisionObject c : this.objects) {
-				c.collideWith(this.hero);
+			for (CollisionObject o : this.objects) {
+				o.collideWith(this.hero);
 			}
 			
 			ArrayList<CollisionObject> shouldRemove = new ArrayList<>();
 			
-			//FIXED
-			ArrayList<CollisionObject> gameObjects = new ArrayList<>();
-			gameObjects.addAll(coins);
-			
-			for(CollisionObject object: gameObjects){
+			//add all objects to remove to the list
+			for(CollisionObject object: objects){
 				if(object.shouldRemove()){
 					shouldRemove.add(object);
 				}
 			}
 			
+			//remove all objects within the list
 			for(CollisionObject object: shouldRemove){
 				this.coins.remove(object);
 			}
-
 
 	}
 	

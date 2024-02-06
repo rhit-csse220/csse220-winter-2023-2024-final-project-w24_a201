@@ -2,6 +2,7 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.Rectangle2D;
 
 /*
  * Coin class controls creating and drawing the coin objects
@@ -21,14 +22,13 @@ public class Coin extends CollisionObject {
         g.fillOval(x, y, 2 * radius, 2 * radius);
     }
 
-	@Override
-	public void collideWith(Hero h) {
-		if (this.overlaps(h)) {
-			this.markToRemove();
-			System.out.println(this.getClass().getSimpleName() + " collided with Hero");
-		}
-	}
-
-    
+    @Override
+    public void collideWith(Hero h) {
+        Rectangle2D.Double coinBox = new Rectangle2D.Double(x, y, width, height);
+        if (coinBox.intersects(h.getBoundingBox())) {
+            markToRemove();
+            System.out.println(this.getClass().getSimpleName() + " collided with Hero");
+        }
+    }  
 
 }
