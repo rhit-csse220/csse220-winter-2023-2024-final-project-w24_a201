@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.JComponent;
 
 /**
@@ -25,6 +24,10 @@ public class GameComponent extends JComponent {
 	private ArrayList<Barrier> barriers = new ArrayList<>();
 	private ArrayList<Coin> coins = new ArrayList<>();
 	private ArrayList<Missile> missiles = new ArrayList<>();
+	
+	private ArrayList<CollisionObject> objects = new ArrayList<>();
+	
+	
 
 	private static final int BARRIER_WIDTH = 20;
 	private static final int BARRIER_HEIGHT = 20;
@@ -33,7 +36,7 @@ public class GameComponent extends JComponent {
 	private static final int MISSILE_HEIGHT = 20;
 	private static final int MISSILE_SPEED = 5;
 	private static final int MISSILE_RADIUS = 10;
-	
+
 	public GameComponent() {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
 	}
@@ -46,11 +49,22 @@ public class GameComponent extends JComponent {
 		this.repaint();
 	}
 
+	public void addObjects() {
+		for (int i = 0; i < coins.size(); i++) {
+			this.objects.add(coins.get(i));
+		}
+	}
+	
 	public void updateGame() {
+		
+		addObjects();
+		
 		//for hero movement
 		hero.move();
 		hero.gravity();
 		hero.flyUp();
+		
+		handleCollisions();
 		
 		//keep the hero on the screen
 		if (hero.getX() > this.getWidth() - hero.getWidth()) {
@@ -71,6 +85,17 @@ public class GameComponent extends JComponent {
 		
 	}
 
+	public void handleCollisions() {
+
+		
+
+			for (CollisionObject c : this.objects) {
+				c.collideWith(this.hero);
+			}
+
+
+	}
+	
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
 		barriers.clear();
 		coins.clear();

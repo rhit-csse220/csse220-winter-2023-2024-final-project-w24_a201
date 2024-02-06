@@ -2,6 +2,7 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.Rectangle2D;
 /**
  * Creates the hero object that is controlled by the user
  */
@@ -67,6 +68,10 @@ public class Hero {
 		if (!isFlying) {
             y += GRAVITY;  
         }
+	}
+
+	public Rectangle2D getBoundingBox() {
+		return new Rectangle2D.Double(this.x, this.y, getWidth(), getWidth());
 	}
 
 }

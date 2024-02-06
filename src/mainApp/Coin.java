@@ -6,15 +6,12 @@ import java.awt.Graphics;
 /*
  * Coin class controls creating and drawing the coin objects
  */
-public class Coin {
+public class Coin extends CollisionObject {
 
-	private int x; 
-    private int y; 
     private int radius; 
 
     public Coin(int x, int y, int radius) {
-        this.x = x;
-        this.y = y;
+    	super(x, y, radius*2, radius*2);
         this.radius = radius;
     }
 
@@ -23,5 +20,14 @@ public class Coin {
         g.setColor(Color.YELLOW); 
         g.fillOval(x, y, 2 * radius, 2 * radius);
     }
+
+	@Override
+	public void collideWith(Hero h) {
+		if (this.overlaps(h)) {
+			System.out.println(this + " collided with Hero");
+		}
+	}
+
+    
 
 }
