@@ -13,10 +13,11 @@ public class Missile extends CollisionObject {
     private int width;
     private int height;   
     private int radius;
+    private GameComponent gameComponent;
     
     private static final int SCREEN_WIDTH = 1000;
 
-    public Missile(int x, int y, int speed, int width, int height, int radius) {
+    public Missile(int x, int y, int speed, int width, int height, int radius, GameComponent gameComponent) {
     	super(x, y, width, height);
     	this.x = x;
     	this.y = y;
@@ -24,6 +25,7 @@ public class Missile extends CollisionObject {
         this.width = width;
         this.height = height;
         this.radius = radius;
+        this.gameComponent = gameComponent;
     }
 
     public void draw(Graphics g) {
@@ -73,8 +75,8 @@ public class Missile extends CollisionObject {
     public void collideWith(Hero h) {
         Rectangle2D.Double missileBox = new Rectangle2D.Double(x, y, width, height);
         if (missileBox.intersects(h.getBoundingBox())) {
-            markToRemove();
-            System.out.println(this.getClass().getSimpleName() + " collided with Hero");
+            gameComponent.switchLevel(gameComponent.getCurrentLevel());
+            System.out.println(this.getClass().getSimpleName() + " collided with Hero. Switching level.");
         }
     }
     

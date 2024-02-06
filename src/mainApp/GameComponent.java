@@ -135,9 +135,9 @@ public class GameComponent extends JComponent {
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
-						missiles.add(new Missile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS));
+						missiles.add(new Missile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS, this));
 					} else if (symbol == 'T') {
-						missiles.add(new TrackingMissile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS));
+						missiles.add(new TrackingMissile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS, this));
 					}
 				}
 				row++;

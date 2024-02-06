@@ -8,9 +8,9 @@ import java.awt.Graphics;
 public class TrackingMissile extends Missile {
 
 	private static int TRACK_SPEED = 3;
-
-	public TrackingMissile(int x, int y, int speed, int width, int height, int radius) {
-		super(x, y, speed, width, height, radius);
+	
+	public TrackingMissile(int x, int y, int speed, int width, int height, int radius, GameComponent gameComponent) {
+		super(x, y, speed, width, height, radius, gameComponent);
 	}
 
 	public void trackHero(Hero hero) {
