@@ -19,6 +19,14 @@ public abstract class CollisionObject {
 	
 	public abstract void collideWith(Hero h);
 	
+	public boolean shouldRemove() {
+		return this.shouldRemove;
+	} 
+	
+	public void markToRemove() {
+		this.shouldRemove = true;
+	}
+	
 	public Rectangle2D.Double getBoundingBox() {
 		return new Rectangle2D.Double(this.x, this.y, getWidth(), getHeight());
 	}

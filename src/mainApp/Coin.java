@@ -24,7 +24,8 @@ public class Coin extends CollisionObject {
 	@Override
 	public void collideWith(Hero h) {
 		if (this.overlaps(h)) {
-			System.out.println(this + " collided with Hero");
+			this.markToRemove();
+			System.out.println(this.getClass().getSimpleName() + " collided with Hero");
 		}
 	}
 

@@ -92,6 +92,22 @@ public class GameComponent extends JComponent {
 			for (CollisionObject c : this.objects) {
 				c.collideWith(this.hero);
 			}
+			
+			ArrayList<CollisionObject> shouldRemove = new ArrayList<>();
+			
+			//FIXED
+			ArrayList<CollisionObject> gameObjects = new ArrayList<>();
+			gameObjects.addAll(coins);
+			
+			for(CollisionObject object: gameObjects){
+				if(object.shouldRemove()){
+					shouldRemove.add(object);
+				}
+			}
+			
+			for(CollisionObject object: shouldRemove){
+				this.coins.remove(object);
+			}
 
 
 	}
