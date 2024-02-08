@@ -50,6 +50,7 @@ public class GameComponent extends JComponent {
 	public void addObjects() {
 		objects.addAll(coins);
 		objects.addAll(missiles);
+		objects.addAll(barriers);
 	}
 	
 	public void updateGame() {
@@ -109,6 +110,7 @@ public class GameComponent extends JComponent {
 		barriers.clear();
 		coins.clear();
 		missiles.clear();
+		objects.clear();
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			String line;
@@ -131,7 +133,7 @@ public class GameComponent extends JComponent {
 					if (symbol == 'B') {
 						barriers.add(new Barrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
 					} else if (symbol == 'E') {
-						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
+						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT, this));
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {

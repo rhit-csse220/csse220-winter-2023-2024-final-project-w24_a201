@@ -2,15 +2,17 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.Rectangle2D;
 /**
  * Creates and draws electrified barriers
  */
 public class ElectricBarrier extends Barrier {
 
-
-	public ElectricBarrier(int x, int y, int width, int height) {
+	private GameComponent gameComponent;
+	
+	public ElectricBarrier(int x, int y, int width, int height, GameComponent gameComponent) {
 		super(x, y, width, height);
-		
+		this.gameComponent = gameComponent;
 	}
 
 	@Override
@@ -18,4 +20,14 @@ public class ElectricBarrier extends Barrier {
 		g.setColor(Color.RED); 
         g.fillRect(getX(), getY()+10, getWidth(), getHeight());
 	}
+	
+	@Override
+    public void collideWith(Hero h) {
+        Rectangle2D barrierBox = new Rectangle2D.Double(x, y, width, height);
+        if (barrierBox.intersects(h.getBoundingBox())) {
+            gameComponent.switchLevel(gameComponent.getCurrentLevel());
+            System.out.println(this.getClass().getSimpleName() + " collided with Hero, switching level");
+        }
+    }
+	
 }

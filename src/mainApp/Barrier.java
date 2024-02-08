@@ -2,17 +2,20 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 /**
  * Makes and draws non-electrified barriers
  */
-public class Barrier {
+public class Barrier extends CollisionObject {
 
-	private int x; 
-    private int y; 
-    private int width;
-    private int height; 
+	protected int x; 
+    protected int y; 
+    protected int width;
+    protected int height; 
 
     public Barrier(int x, int y, int width, int height) {
+    	super(x, y, width, height);
         this.x = x;
         this.y = y;
         this.width = width;
@@ -54,6 +57,15 @@ public class Barrier {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	@Override
+	public void collideWith(Hero h) {
+		Rectangle2D.Double barrierBox = new Rectangle2D.Double(x, y, width, height);
+        if (barrierBox.intersects(h.getBoundingBox())) {
+        	h.setX(this.x - h.getWidth());
+            System.out.println(this.getClass().getSimpleName() + " collided with Hero");
+        }
 	}
 
 }
