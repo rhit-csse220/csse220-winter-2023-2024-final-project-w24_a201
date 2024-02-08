@@ -133,7 +133,7 @@ public class GameComponent extends JComponent {
 					if (symbol == 'B') {
 						barriers.add(new Barrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
 					} else if (symbol == 'E') {
-						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT, this));
+						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
