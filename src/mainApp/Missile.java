@@ -75,6 +75,7 @@ public class Missile extends CollisionObject {
     public void collideWith(Hero h) {
         Rectangle2D.Double missileBox = new Rectangle2D.Double(x, y, width, height);
         if (missileBox.intersects(h.getBoundingBox())) {
+        	h.loseLives();
             gameComponent.switchLevel(gameComponent.getCurrentLevel());
             System.out.println(this.getClass().getSimpleName() + " collided with Hero, switching level");
         }

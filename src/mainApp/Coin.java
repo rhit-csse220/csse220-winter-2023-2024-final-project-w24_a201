@@ -10,6 +10,7 @@ import java.awt.geom.Rectangle2D;
 public class Coin extends CollisionObject {
 
     private int radius; 
+    private int score = 0;
 
     public Coin(int x, int y, int radius) {
     	super(x, y, radius*2, radius*2);
@@ -26,8 +27,11 @@ public class Coin extends CollisionObject {
     public void collideWith(Hero h) {
         Rectangle2D.Double coinBox = new Rectangle2D.Double(x, y, width, height);
         if (coinBox.intersects(h.getBoundingBox())) {
+        	if (!this.shouldRemove()) {
+        		h.addScore();
+        	}
             markToRemove();
-            System.out.println(this.getClass().getSimpleName() + " collided with Hero");
+            //System.out.println(this.getClass().getSimpleName() + " collided with Hero");
         }
     }  
 

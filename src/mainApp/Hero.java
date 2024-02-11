@@ -12,17 +12,21 @@ public class Hero {
 	private static final int HERO_HEIGHT = 25;
 	private static final int FLYING_SPEED = 5;
 	private static final int GRAVITY = 5;
+	private int score;
 	
 	private int x;
     private int y;
     private int speed;
     protected boolean isFlying;
+	private int lives;
     
     public Hero(int x, int y, int speed) {
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.isFlying = false;
+        this.score = 0;
+        this.lives = 3;
     }
 
     public int getX() {
@@ -73,5 +77,21 @@ public class Hero {
 	public Rectangle2D getBoundingBox() {
 		return new Rectangle2D.Double(this.x, this.y, getWidth(), getWidth());
 	}
+
+	public void addScore() {
+		this.score++;
+		System.out.println("Score: " + this.score);
+		
+	}
+
+	public void loseLives() {
+		this.lives--;
+		System.out.println("Lives Remaining: " + this.lives);
+	}
+
+	public int getLives() {
+		return this.lives;
+	}
+
 
 }

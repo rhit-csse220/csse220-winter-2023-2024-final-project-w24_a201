@@ -24,7 +24,7 @@ public class GameComponent extends JComponent {
 	private ArrayList<Barrier> barriers = new ArrayList<>();
 	private ArrayList<Coin> coins = new ArrayList<>();
 	private ArrayList<Missile> missiles = new ArrayList<>();
-	
+
 	private ArrayList<CollisionObject> objects = new ArrayList<>();
 
 	private static final int BARRIER_WIDTH = 20;
@@ -38,7 +38,7 @@ public class GameComponent extends JComponent {
 	public GameComponent() {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
 	}
-	
+
 	public Hero getHero() {
 		return hero;
 	}
@@ -52,60 +52,66 @@ public class GameComponent extends JComponent {
 		objects.addAll(missiles);
 		objects.addAll(barriers);
 	}
-	
+
 	public void updateGame() {
-		//adds objects to collision object list
+		if (hero.getLives()<=0) {
+			barriers.clear();
+			coins.clear();
+			missiles.clear();
+			objects.clear();
+		}
+		// adds objects to collision object list
 		addObjects();
-		
-		//for hero movement
+
+		// for hero movement
 		hero.move();
 		hero.gravity();
 		hero.flyUp();
-		
-		//handles collisions
+
+		// handles collisions
 		handleCollisions();
-		
-		//keep the hero on the screen
+
+		// keep the hero on the screen
 		if (hero.getX() > this.getWidth() - hero.getWidth()) {
 			hero.setX(this.getWidth() - hero.getWidth());
 		}
 		if (hero.getY() < 0) {
 			hero.setY(0);
 		}
-		if ( hero.getY() > this.getHeight() - hero.getWidth()) {
-			hero.setY(this.getHeight() -hero.getWidth());
+		if (hero.getY() > this.getHeight() - hero.getWidth()) {
+			hero.setY(this.getHeight() - hero.getWidth());
 		}
-		
-		//for missile movement
+
+		// for missile movement
 		for (Missile missile : missiles) {
-	        missile.move();
-	        missile.trackHero(hero);
-	    }
-		
+			missile.move();
+			missile.trackHero(hero);
+		}
+
 	}
 
 	public void handleCollisions() {
 
-			for (CollisionObject o : this.objects) {
-				o.collideWith(this.hero);
+		for (CollisionObject o : this.objects) {
+			o.collideWith(this.hero);
+		}
+
+		ArrayList<CollisionObject> shouldRemove = new ArrayList<>();
+
+		// add all objects to remove to the list
+		for (CollisionObject object : objects) {
+			if (object.shouldRemove()) {
+				shouldRemove.add(object);
 			}
-			
-			ArrayList<CollisionObject> shouldRemove = new ArrayList<>();
-			
-			//add all objects to remove to the list
-			for(CollisionObject object: objects){
-				if(object.shouldRemove()){
-					shouldRemove.add(object);
-				}
-			}
-			
-			//remove all objects within the list
-			for(CollisionObject object: shouldRemove){
-				this.coins.remove(object);
-			}
+		}
+
+		// remove all objects within the list
+		for (CollisionObject object : shouldRemove) {
+			this.coins.remove(object);
+		}
 
 	}
-	
+
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
 		barriers.clear();
 		coins.clear();
@@ -137,9 +143,11 @@ public class GameComponent extends JComponent {
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
-						missiles.add(new Missile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS, this));
+						missiles.add(
+								new Missile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS, this));
 					} else if (symbol == 'T') {
-						missiles.add(new TrackingMissile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS, this));
+						missiles.add(new TrackingMissile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT,
+								MISSILE_RADIUS, this));
 					}
 				}
 				row++;
