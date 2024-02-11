@@ -93,5 +93,9 @@ public class Hero {
 		return this.lives;
 	}
 
+	public int getScore() {
+		return this.score;
+	}
+
 
 }

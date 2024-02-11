@@ -54,7 +54,7 @@ public class GameComponent extends JComponent {
 	}
 
 	public void updateGame() {
-		if (hero.getLives()<=0) {
+		if (hero.getLives() <= 0) {
 			barriers.clear();
 			coins.clear();
 			missiles.clear();
@@ -92,24 +92,34 @@ public class GameComponent extends JComponent {
 
 	public void handleCollisions() {
 
-		for (CollisionObject o : this.objects) {
+		ArrayList<CollisionObject> objectsCopy = new ArrayList<>(objects);
+
+		for (CollisionObject o : objectsCopy) { 
 			o.collideWith(this.hero);
 		}
 
 		ArrayList<CollisionObject> shouldRemove = new ArrayList<>();
 
-		// add all objects to remove to the list
+		//mark objects that need to be removed
 		for (CollisionObject object : objects) {
 			if (object.shouldRemove()) {
 				shouldRemove.add(object);
 			}
 		}
 
-		// remove all objects within the list
+		//remove marked objects
 		for (CollisionObject object : shouldRemove) {
-			this.coins.remove(object);
+			removeObject(object);
 		}
 
+	}
+
+	public void removeObject(CollisionObject object) {
+		if (coins.contains(object)) {
+			coins.remove(object);
+		} else if (missiles.contains(object)) {
+			missiles.remove(object);
+		}
 	}
 
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
@@ -139,7 +149,7 @@ public class GameComponent extends JComponent {
 					if (symbol == 'B') {
 						barriers.add(new Barrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
 					} else if (symbol == 'E') {
-						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT));
+						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT, this));
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
@@ -164,10 +174,18 @@ public class GameComponent extends JComponent {
 
 	public void switchLevel(int newLevel) {
 		try {
-			currentLevel = newLevel;
-			hero.setX(0);
-			hero.setY(380);
-			loadLevel("Levels/level" + currentLevel + ".txt");
+			if (hero.getLives() <= 0) {
+				System.out.println("YOU LOST!");
+				System.out.print("FINAL SCORE: " + hero.getScore());
+				System.exit(0);
+				
+			}
+			else {
+				currentLevel = newLevel;
+				hero.setX(0);
+				hero.setY(380);
+				loadLevel("Levels/level" + currentLevel + ".txt");
+			}
 		} catch (InvalidLevelFormatException e) {
 			System.err.println("Invalid level format: " + e.getMessage());
 		}
