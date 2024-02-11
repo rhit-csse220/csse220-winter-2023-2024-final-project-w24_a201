@@ -27,7 +27,6 @@ public class ElectricBarrier extends Barrier {
 	    if (electricBarrierBox.intersects(h.getBoundingBox())) {
 	        h.loseLives();
 	        markToRemove(); 
-	        System.out.println(this.getClass().getSimpleName() + " collided with Hero, restarting level");
 	        gameComponent.switchLevel(gameComponent.getCurrentLevel());
 	    }
     }

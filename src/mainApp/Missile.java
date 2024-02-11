@@ -76,8 +76,7 @@ public class Missile extends CollisionObject {
 		Rectangle2D.Double missileBox = new Rectangle2D.Double(x, y, width, height);
 	    if (missileBox.intersects(h.getBoundingBox())) {
 	        h.loseLives();
-	        markToRemove(); 
-	        System.out.println(this.getClass().getSimpleName() + " collided with Hero, restarting level");
+	        markToRemove();
 	        gameComponent.switchLevel(gameComponent.getCurrentLevel());
 	    }
     }

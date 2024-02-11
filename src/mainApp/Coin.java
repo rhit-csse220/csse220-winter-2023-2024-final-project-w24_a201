@@ -10,8 +10,6 @@ import java.awt.geom.Rectangle2D;
 public class Coin extends CollisionObject {
 
     private int radius; 
-    private int score = 0;
-
     public Coin(int x, int y, int radius) {
     	super(x, y, radius*2, radius*2);
         this.radius = radius;
@@ -31,7 +29,6 @@ public class Coin extends CollisionObject {
         		h.addScore();
         	}
             markToRemove();
-            //System.out.println(this.getClass().getSimpleName() + " collided with Hero");
         }
     }  
 

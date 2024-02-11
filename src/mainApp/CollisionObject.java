@@ -2,6 +2,9 @@ package mainApp;
 
 import java.awt.geom.Rectangle2D;
 
+/*
+ * abstract class that is super class for handling collisions
+ */
 public abstract class CollisionObject {
 
 	protected int x;
