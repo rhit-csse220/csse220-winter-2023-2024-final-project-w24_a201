@@ -165,6 +165,8 @@ public class GameComponent extends JComponent {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'L') {
 						coins.add(new LifeCoin(x, y, COIN_RADIUS));
+					}else if (symbol == 'S') {
+						coins.add(new SpecialCoin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
 						missiles.add(
 								new Missile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS, this));
