@@ -17,7 +17,7 @@ public class GameComponent extends JComponent {
 	private static final int STARTING_X = 0;
 	private static final int STARTING_Y = 380;
 	private static final int STARTING_SPEED = 5;
-	private static final int MAX_LEVELS = 3;
+	private static final int MAX_LEVEL = 3;
 
 	private Hero hero;
 
@@ -185,7 +185,7 @@ public class GameComponent extends JComponent {
 				System.exit(0);
 				
 			}
-			else if (newLevel > MAX_LEVELS){
+			else if (newLevel > MAX_LEVEL){
 				System.out.println("YOU WIN!");
 				System.out.print("FINAL SCORE: " + hero.getScore());
 				System.exit(0);
