@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
@@ -21,6 +22,7 @@ public class GameComponent extends JComponent {
 	private static final int MAX_LEVEL = 3;
 
 	private Hero hero;
+	private JLabel label;
 
 	private int currentLevel = 1;
 	private ArrayList<Barrier> barriers = new ArrayList<>();
@@ -37,8 +39,9 @@ public class GameComponent extends JComponent {
 	private static final int MISSILE_SPEED = 5;
 	private static final int MISSILE_RADIUS = 10;
 
-	public GameComponent() {
+	public GameComponent(JLabel label) {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
+		this.label = label;
 	}
 
 	public Hero getHero() {
@@ -56,6 +59,7 @@ public class GameComponent extends JComponent {
 	}
 
 	public void updateGame() {
+		updateLabel(this.label);
 		
 		if (hero.getX()+hero.getWidth()>=985) {
 			switchLevel(currentLevel+1);
@@ -233,8 +237,7 @@ public class GameComponent extends JComponent {
 	}
 	
 	public void updateLabel(JLabel label) {
-		String stuff = "Score: " + this.getHero().getScore() + "\n  Lives: " + this.getHero().getLives();
-		label.setText(stuff);
+		label.setText("Score: " + this.getHero().getScore() + "\n  Lives: " + this.getHero().getLives()); 
 	}
 
 }

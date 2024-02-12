@@ -22,12 +22,12 @@ public class GameMain {
 		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         
-        GameComponent component = new GameComponent();
+        JLabel label = new JLabel();
+        frame.add(label, BorderLayout.NORTH);
+        GameComponent component = new GameComponent(label);
         frame.add(component);
         GameListener gameListener = new GameListener(component);
         
-        JLabel label = new JLabel("Score: " + component.getHero().getScore() + "\n  Lives: " + component.getHero().getLives());
-        frame.add(label, BorderLayout.NORTH);
         
         Hero hero = component.getHero();
 		KeystrokeListener keystrokeHandler = new KeystrokeListener(component, hero);
