@@ -54,6 +54,10 @@ public class GameComponent extends JComponent {
 	}
 
 	public void updateGame() {
+		if (hero.getX()+hero.getWidth()>=985) {
+			switchLevel(currentLevel+1);
+		}
+		
 		if (hero.getLives() <= 0) {
 			barriers.clear();
 			coins.clear();
