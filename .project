@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/Images/TESTIMAGE.jpg</name>
-			<type>1</type>
-			<location>C:/Users/strawmbj/OneDrive - Rose-Hulman Institute of Technology/CSSE220 Winter/Final Project/TESTIMAGE.jpg</location>
-		</link>
-	</linkedResources>
 </projectDescription>
