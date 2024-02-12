@@ -1,6 +1,9 @@
 package mainApp;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
@@ -22,6 +25,9 @@ public class GameMain {
         GameComponent component = new GameComponent();
         frame.add(component);
         GameListener gameListener = new GameListener(component);
+        
+        JLabel label = new JLabel("Score: " + component.getHero().getScore() + "\n  Lives: " + component.getHero().getLives());
+        frame.add(label, BorderLayout.NORTH);
         
         Hero hero = component.getHero();
 		KeystrokeListener keystrokeHandler = new KeystrokeListener(component, hero);

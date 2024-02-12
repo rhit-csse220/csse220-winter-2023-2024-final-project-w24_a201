@@ -101,5 +101,9 @@ public class Hero {
 		this.speed = velocity;
 	}
 
+	public void addLives() {
+		this.lives += 1;
+	}
+
 
 }

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 /**
  * This class is responsible for updating and drawing what is on the screen.
@@ -55,6 +56,7 @@ public class GameComponent extends JComponent {
 	}
 
 	public void updateGame() {
+		
 		if (hero.getX()+hero.getWidth()>=985) {
 			switchLevel(currentLevel+1);
 		}
@@ -157,6 +159,8 @@ public class GameComponent extends JComponent {
 						barriers.add(new ElectricBarrier(x, y, BARRIER_WIDTH, BARRIER_HEIGHT, this));
 					} else if (symbol == 'C') {
 						coins.add(new Coin(x, y, COIN_RADIUS));
+					} else if (symbol == 'L') {
+						coins.add(new LifeCoin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
 						missiles.add(
 								new Missile(x, y, MISSILE_SPEED, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_RADIUS, this));
@@ -226,6 +230,11 @@ public class GameComponent extends JComponent {
 
 	public void gravity() {
 		hero.gravity();
+	}
+	
+	public void updateLabel(JLabel label) {
+		String stuff = "Score: " + this.getHero().getScore() + "\n  Lives: " + this.getHero().getLives();
+		label.setText(stuff);
 	}
 
 }
