@@ -97,5 +97,9 @@ public class Hero {
 		return this.score;
 	}
 
+	public void setSpeed(int velocity) {
+		this.speed = velocity;
+	}
+
 
 }

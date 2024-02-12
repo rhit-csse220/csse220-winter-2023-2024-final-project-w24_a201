@@ -13,6 +13,7 @@ public class KeystrokeListener implements KeyListener {
 	private static final int SPACE_KEY_ID = 32;
 	private static final int UP_ARROW_ID = 38;
 	private static final int DOWN_ARROW_ID = 40;
+	private static final int LEFT_ARROW_ID = 37;
 	public KeystrokeListener(GameComponent component, Hero hero) {
 		this.component = component;
 		this.hero = hero;
@@ -35,12 +36,18 @@ public class KeystrokeListener implements KeyListener {
 		if (e.getKeyCode() == DOWN_ARROW_ID) {
         	component.switchLevel(component.getCurrentLevel()-1);
         }
+		if (e.getKeyCode() == LEFT_ARROW_ID) {
+			hero.setSpeed(0);
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == SPACE_KEY_ID) {
 			hero.isFlying = false;
+		}
+		if (e.getKeyCode() == LEFT_ARROW_ID) {
+			hero.setSpeed(5);
 		}
 	}
 
