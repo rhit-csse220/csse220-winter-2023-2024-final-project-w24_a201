@@ -195,7 +195,7 @@ public class GameComponent extends JComponent {
 				System.exit(0);
 				
 			}
-			else if (newLevel > MAX_LEVEL){
+			else if (newLevel > MAX_LEVEL && hero.getX()+hero.getWidth()>=985){
 				System.out.println("YOU WIN!");
 				System.out.print("FINAL SCORE: " + hero.getScore());
 				System.exit(0);
