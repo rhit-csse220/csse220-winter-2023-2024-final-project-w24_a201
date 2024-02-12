@@ -105,5 +105,15 @@ public class Hero {
 		this.lives += 1;
 	}
 
+	public void setLives(int i) {
+		this.lives = 3;
+		
+	}
+
+	public void setScore(int i) {
+		this.score = 0;
+		
+	}
+
 
 }

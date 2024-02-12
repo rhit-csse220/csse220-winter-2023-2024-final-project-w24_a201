@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  * This class is responsible for updating and drawing what is on the screen.
@@ -60,11 +61,11 @@ public class GameComponent extends JComponent {
 
 	public void updateGame() {
 		updateLabel(this.label);
-		
-		if (hero.getX()+hero.getWidth()>=985) {
-			switchLevel(currentLevel+1);
+
+		if (hero.getX() + hero.getWidth() >= 985) {
+			switchLevel(currentLevel + 1);
 		}
-		
+
 		if (hero.getLives() <= 0) {
 			barriers.clear();
 			coins.clear();
@@ -105,20 +106,20 @@ public class GameComponent extends JComponent {
 
 		ArrayList<CollisionObject> objectsCopy = new ArrayList<>(objects);
 
-		for (CollisionObject o : objectsCopy) { 
+		for (CollisionObject o : objectsCopy) {
 			o.collideWith(this.hero);
 		}
 
 		ArrayList<CollisionObject> shouldRemove = new ArrayList<>();
 
-		//mark objects that need to be removed
+		// mark objects that need to be removed
 		for (CollisionObject object : objects) {
 			if (object.shouldRemove()) {
 				shouldRemove.add(object);
 			}
 		}
 
-		//remove marked objects
+		// remove marked objects
 		for (CollisionObject object : shouldRemove) {
 			removeObject(object);
 		}
@@ -165,7 +166,7 @@ public class GameComponent extends JComponent {
 						coins.add(new Coin(x, y, COIN_RADIUS));
 					} else if (symbol == 'L') {
 						coins.add(new LifeCoin(x, y, COIN_RADIUS));
-					}else if (symbol == 'S') {
+					} else if (symbol == 'S') {
 						coins.add(new SpecialCoin(x, y, COIN_RADIUS));
 					} else if (symbol == 'M') {
 						missiles.add(
@@ -193,14 +194,24 @@ public class GameComponent extends JComponent {
 				System.out.println("YOU LOST!");
 				System.out.print("FINAL SCORE: " + hero.getScore());
 				System.exit(0);
-				
-			}
-			else if (newLevel > MAX_LEVEL && hero.getX()+hero.getWidth()>=985){
+
+			} else if (newLevel > MAX_LEVEL && hero.getX() + hero.getWidth() >= 985) {
 				System.out.println("YOU WIN!");
 				System.out.print("FINAL SCORE: " + hero.getScore());
-				System.exit(0);
-			}
-			else {
+				int answer = JOptionPane.showConfirmDialog(label, "Play Again?");
+				if (answer == 1 || answer == 2) {
+					System.exit(0);
+				} else {
+					barriers.clear();
+					coins.clear();
+					missiles.clear();
+					objects.clear();
+					hero.setScore(0);
+					hero.setLives(3);
+					switchLevel(1);
+				}
+
+			} else {
 				currentLevel = newLevel;
 				hero.setX(0);
 				hero.setY(380);
@@ -237,9 +248,9 @@ public class GameComponent extends JComponent {
 	public void gravity() {
 		hero.gravity();
 	}
-	
+
 	public void updateLabel(JLabel label) {
-		label.setText("Score: " + this.getHero().getScore() + "\n  Lives: " + this.getHero().getLives()); 
+		label.setText("Score: " + this.getHero().getScore() + "\n  Lives: " + this.getHero().getLives());
 	}
 
 }
