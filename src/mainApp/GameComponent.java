@@ -193,23 +193,12 @@ public class GameComponent extends JComponent {
 			if (hero.getLives() <= 0) {
 				System.out.println("YOU LOST!");
 				System.out.print("FINAL SCORE: " + hero.getScore());
-				System.exit(0);
+				restart();
 
 			} else if (newLevel > MAX_LEVEL && hero.getX() + hero.getWidth() >= 985) {
 				System.out.println("YOU WIN!");
 				System.out.print("FINAL SCORE: " + hero.getScore());
-				int answer = JOptionPane.showConfirmDialog(label, "Play Again?");
-				if (answer == 1 || answer == 2) {
-					System.exit(0);
-				} else {
-					barriers.clear();
-					coins.clear();
-					missiles.clear();
-					objects.clear();
-					hero.setScore(0);
-					hero.setLives(3);
-					switchLevel(1);
-				}
+				restart();
 
 			} else {
 				currentLevel = newLevel;
@@ -235,6 +224,21 @@ public class GameComponent extends JComponent {
 			missile.draw(g);
 		}
 		hero.draw(g);
+	}
+
+	public void restart() {
+		int answer = JOptionPane.showConfirmDialog(label, "Play Again?");
+		if (answer == 1 || answer == 2) {
+			System.exit(0);
+		} else {
+			barriers.clear();
+			coins.clear();
+			missiles.clear();
+			objects.clear();
+			hero.setScore(0);
+			hero.setLives(3);
+			switchLevel(1);
+		}
 	}
 
 	public void fly() {
