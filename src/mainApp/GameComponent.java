@@ -138,8 +138,7 @@ public class GameComponent extends JComponent {
 
 			while ((line = reader.readLine()) != null) {
 				if (line.length() != expectedLineLength) {
-					barriers.clear();
-					coins.clear();
+					clearAll();
 					switchLevel(1);
 					throw new InvalidLevelFormatException("Inconsistent line lengths in the level file");
 				}
@@ -193,8 +192,8 @@ public class GameComponent extends JComponent {
 
 			} else {
 				currentLevel = newLevel;
-				hero.setX(0);
-				hero.setY(380);
+				hero.setX(STARTING_X);
+				hero.setY(STARTING_Y);
 				loadLevel("Levels/level" + currentLevel + ".txt");
 			}
 		} catch (InvalidLevelFormatException e) {
