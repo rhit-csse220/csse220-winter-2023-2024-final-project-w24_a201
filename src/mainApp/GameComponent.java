@@ -218,7 +218,7 @@ public class GameComponent extends JComponent {
 	}
 
 	public void restart() {
-		int answer = JOptionPane.showConfirmDialog(label, "Play Again?");
+		int answer = JOptionPane.showConfirmDialog(this, "Play Again?");
 		if (answer == 1 || answer == 2) {
 			System.exit(0);
 		} else {
