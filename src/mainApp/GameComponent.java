@@ -39,6 +39,7 @@ public class GameComponent extends JComponent {
 	private static final int MISSILE_HEIGHT = 20;
 	private static final int MISSILE_SPEED = 5;
 	private static final int MISSILE_RADIUS = 10;
+	private static final int SCREEN_WIDTH = 1000;
 
 	public GameComponent(JLabel label) {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
@@ -62,16 +63,10 @@ public class GameComponent extends JComponent {
 	public void updateGame() {
 		updateLabel(this.label);
 
-		if (hero.getX() + hero.getWidth() >= 985) {
+		if (hero.getX() + hero.getWidth() >= SCREEN_WIDTH - hero.getWidth()) {
 			switchLevel(currentLevel + 1);
 		}
 
-		if (hero.getLives() <= 0) {
-			barriers.clear();
-			coins.clear();
-			missiles.clear();
-			objects.clear();
-		}
 		// adds objects to collision object list
 		addObjects();
 
@@ -135,10 +130,7 @@ public class GameComponent extends JComponent {
 	}
 
 	public void loadLevel(String filename) throws InvalidLevelFormatException {
-		barriers.clear();
-		coins.clear();
-		missiles.clear();
-		objects.clear();
+		clearAll();
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			String line;
@@ -231,14 +223,19 @@ public class GameComponent extends JComponent {
 		if (answer == 1 || answer == 2) {
 			System.exit(0);
 		} else {
-			barriers.clear();
-			coins.clear();
-			missiles.clear();
-			objects.clear();
+			clearAll();
 			hero.setScore(0);
 			hero.setLives(3);
 			switchLevel(1);
 		}
+	}
+
+	private void clearAll() {
+		barriers.clear();
+		coins.clear();
+		missiles.clear();
+		objects.clear();
+
 	}
 
 	public void fly() {

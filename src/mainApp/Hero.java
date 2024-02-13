@@ -80,13 +80,11 @@ public class Hero {
 
 	public void addScore() {
 		this.score++;
-		System.out.println("Score: " + this.score);
 		
 	}
 
 	public void loseLives() {
 		this.lives--;
-		System.out.println("Lives Remaining: " + this.lives);
 	}
 
 	public int getLives() {

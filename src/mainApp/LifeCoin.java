@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
+/*
+ * Class responsible for drawing a coin that gives the player an extra life
+ */
+
 public class LifeCoin extends Coin {
 
 	public LifeCoin(int x, int y, int radius) {
@@ -22,7 +26,6 @@ public class LifeCoin extends Coin {
         if (coinBox.intersects(h.getBoundingBox())) {
         	if (!this.shouldRemove()) {
         		h.addLives();
-        		System.out.println("added life");
         	}
             markToRemove();
         }

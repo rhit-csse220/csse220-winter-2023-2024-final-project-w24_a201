@@ -4,8 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.geom.Rectangle2D;
 
+/*
+ * Responsible for creating a coin that gives extra points
+ */
+
 public class SpecialCoin extends Coin {
 
+	public static final int POINTS = 3;
 	public SpecialCoin(int x, int y, int radius) {
 		super(x, y, radius/2);
 	}
@@ -20,10 +25,9 @@ public class SpecialCoin extends Coin {
         Rectangle2D.Double coinBox = new Rectangle2D.Double(x, y, width, height);
         if (coinBox.intersects(h.getBoundingBox())) {
         	if (!this.shouldRemove()) {
-        		h.addScore();
-        		h.addScore();
-        		h.addScore();
-        		System.out.println("added life");
+        		for (int i=0;i<POINTS;i++) {
+        			h.addScore();
+        		}
         	}
             markToRemove();
         }
