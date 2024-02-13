@@ -39,7 +39,6 @@ public class GameComponent extends JComponent {
 	private static final int MISSILE_HEIGHT = 20;
 	private static final int MISSILE_SPEED = 5;
 	private static final int MISSILE_RADIUS = 10;
-	private static final int SCREEN_WIDTH = 1000;
 
 	public GameComponent(JLabel label) {
 		hero = new Hero(STARTING_X, STARTING_Y, STARTING_SPEED);
@@ -63,7 +62,7 @@ public class GameComponent extends JComponent {
 	public void updateGame() {
 		updateLabel(this.label);
 
-		if (hero.getX() + hero.getWidth() >= SCREEN_WIDTH - hero.getWidth()) {
+		if (hero.getX() + hero.getWidth() >= this.getWidth()) {
 			switchLevel(currentLevel + 1);
 		}
 
@@ -187,7 +186,7 @@ public class GameComponent extends JComponent {
 				System.out.print("FINAL SCORE: " + hero.getScore());
 				restart();
 
-			} else if (newLevel > MAX_LEVEL && hero.getX() + hero.getWidth() >= 985) {
+			} else if (newLevel > MAX_LEVEL && hero.getX() + hero.getWidth() >= this.getWidth()) {
 				System.out.println("YOU WIN!");
 				System.out.print("FINAL SCORE: " + hero.getScore());
 				restart();
