@@ -19,7 +19,7 @@ public class GameMain {
 	private static final int FRAME_WIDTH = 1000;
 	
 	private void runApp() {	
-		JFrame frame = new JFrame("JETPACK JOYRIDE!!!");
+		JFrame frame = new JFrame("JETPACK JOYRIDE!!");
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         
         JLabel label = new JLabel();
